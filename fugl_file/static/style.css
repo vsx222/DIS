@@ -1,9 +1,11 @@
+/* ====== Grundopsætning af siden ====== */
 html, body {
     height: 100%;
     margin: 0;
     font-family: sans-serif;
 }
 
+/* Baggrundsbillede for hele siden */
 body {
     background: url('/static/pictures/clean.png') no-repeat center center fixed;
     background-size: cover;
@@ -13,7 +15,8 @@ body {
     position: relative;
 }
 
-/* Logo i øverste højre hjørne */
+
+/* ====== Logo i øverste højre hjørne ====== */
 .top-logo {
     position: absolute;
     top: 20px;
@@ -28,23 +31,24 @@ body {
     display: block;
 }
 
-/* Scorebox under logo */
+
+/* ====== Scorebox (gæt og highscore) ====== */
 .score-box {
     position: absolute;
     top: 300px;
     right: 14%;
     text-align: center;
     z-index: 999;
-    width: max-content;
+    width: max-content; /* Boksen passer til indholdets bredde */
 }
-
 
 .score-box h3 {
     margin: 4px 0;
     padding: 0;
 }
 
-/* Dropdown-box under score */
+
+/* ====== Dropdown-boks til spørgsmål ====== */
 .dropdown-box {
     position: absolute;
     top: 240px;
@@ -53,6 +57,7 @@ body {
     z-index: 998;
 }
 
+/* Styling af dropdown og knap */
 .dropdown-box select,
 .dropdown-box button {
     margin-top: 8px;
@@ -66,15 +71,15 @@ body {
     padding: 0;
 }
 
-/* Guess-input under dropdown */
+
+/* ====== Gæt inputfelt og knap ====== */
 .guess-box {
     position: absolute;
-    top: 470px;  /* ca. 120px under top (dropdown ligger ved 240px) */
+    top: 470px;
     right: 14.5%;
     text-align: center;
     z-index: 997;
 }
-
 
 .guess-box input[type="text"],
 .guess-box input[type="submit"] {
@@ -84,15 +89,17 @@ body {
     margin-right: auto;
 }
 
-/* Align score elements */
+
+/* ====== Justering af "Guesses" og "Highscore" indbyrdes ====== */
 .guess-align, .high-align {
     margin: 0;
 }
 
-/* Galleri med kendte */
+
+/* ====== Galleriet med kendte ====== */
 .grid-gallery {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(6, 1fr);  /* 6 kolonner */
     gap: 10px;
     max-width: 90vw;
     padding: 20px;
@@ -109,7 +116,8 @@ body {
     border-radius: 8px;
 }
 
-/* Wrapper til billeder og overlays */
+
+/* ====== Billede-wrapper og overlay (bagsidebilleder) ====== */
 .img-wrapper {
     position: relative;
     width: 100%;
@@ -130,10 +138,11 @@ body {
     top: 0;
     left: 0;
     display: none;
-    z-index: 2;
+    z-index: 2; /* Sørger for at overlay ligger ovenpå */
 }
 
-/* Midtercentreret indhold (brugt til resten af layoutet) */
+
+/* ====== Centreret container til galleriet ====== */
 .main-body {
     flex: 1;
     display: flex;
@@ -150,18 +159,20 @@ body {
     padding-top: 150px;
 }
 
-/* Spørgsmålstekst (ubrugt men beholdt) */
+
+/* ====== Spørgsmålsoverskrift ====== */
 .ask-align {
     text-align: center;
-    margin-top: 130px;   /* justér højden ned på skærmen */
+    margin-top: 130px;
     margin-left: auto;
     margin-right: auto;
     width: 100%;
-    white-space: nowrap;  /* sikrer én linje */
-    font-size: 1.2rem;     /* evt. lidt større tekst */
+    white-space: nowrap;  /* Sikrer at hele linjen vises uden linjeskift */
+    font-size: 1.2rem;
 }
 
-/* Lister */
+
+/* ====== Lister (ubrugt pt.) ====== */
 ul {
     list-style-type: none;
     padding: 0;
@@ -172,9 +183,11 @@ li {
     margin: 0.5rem 0;
 }
 
+
+/* ====== Restart Game knap placering ====== */
 .restart-box {
     position: absolute;
-    top: 800px; /* ca. 60-70px under guess-box */
+    top: 800px;
     right: 16%;
     text-align: center;
     z-index: 996;
@@ -185,21 +198,21 @@ li {
 }
 
 
+/* ====== Resultatboks med tidligere gæt ====== */
 .results-box {
     position: absolute;
-    top: 580px;           /* fast placering under .restart-box */
+    top: 580px;       /* Fast placering under guess-box */
     right: 17%;
     text-align: left;
     z-index: 995;
     max-width: 100px;
     white-space: normal;
-    word-wrap: break-word;
+    word-wrap: break-word;  /* Bryder lange ord hvis nødvendigt */
 }
 
-
-
+/* Mindre tekst i resultatlisten */
 .results-box p {
-    font-size: 0.70rem;   /* Gør teksten mindre – du kan justere tallet */
+    font-size: 0.70rem;
     line-height: 1.3;
 }
 
@@ -208,23 +221,23 @@ li {
 }
 
 
+/* ====== Fælles knap-styling (bruges til Get Answer og Restart Game) ====== */
 .btn {
     display: inline-block;
     padding: 10px 20px;
     font-size: 1rem;
     color: white;
-    background-color: #1226dd;     /* flot grøn */
+    background-color: #1226dd;     /* Blå baggrund */
     border: none;
     border-radius: 8px;
     text-decoration: none;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Lidt skygge */
 }
 
+/* Hover-effekt til knapper */
 .btn:hover {
-    background-color: #1226dd;     /* lidt mørkere grøn ved hover */
-    transform: scale(1.05);        /* lille zoom-effekt */
+    background-color: #1226dd;     /* Du kan ændre til en mørkere blå fx #0f1fb8 */
+    transform: scale(1.05);        /* Lille zoom ved hover */
 }
-
-
