@@ -11,6 +11,10 @@ db.init_db()
 def index():
     conn = db.db_connection()
     c = conn.cursor()
+    # Get current highscore
+    highscore = c.execute("SELECT score FROM highscore WHERE id = 1").fetchone()["score"]
+
+    
 
     if "target_celebrity" not in session:
         celeb = c.execute("SELECT Name FROM celebrities ORDER BY RANDOM() LIMIT 1").fetchone()
@@ -25,8 +29,15 @@ def index():
 
         if guess.lower().strip() == session["target_celebrity"].lower():
             session["winner"] = True
+
+            # Update highscore if current guess_count is greater
+            if session["guess_count"] > highscore:
+                highscore = session["guess_count"]
+                c.execute("UPDATE highscore SET score = ? WHERE id = 1", (highscore,))
+                conn.commit()
         else:
             session["winner"] = False
+
 
     guesses = c.execute("SELECT guess_text FROM guesses").fetchall()
     headers = [desc[0] for desc in c.execute("SELECT * FROM celebrities").description]
@@ -34,13 +45,15 @@ def index():
     conn.close()
 
     return render_template(
-        "name.html",  # Updated to match your renamed template
+        "name.html",
         guesses=guesses,
         headers=headers,
         data=data,
         guess_count=session.get("guess_count", 0),
         winner=session.get("winner", None),
+        highscore=highscore,
     )
+
 
 @app.route("/reset")
 def reset():
