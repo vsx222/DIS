@@ -84,11 +84,11 @@ def get_answer():
         "Actor": "Actor",
         "Sportsperson": "Sportsperson",
         "American": "American",
-        "Nobel_Prize_Winner": "Nobel Prize Winner",
-        "On_Instagram": "On Instagram",
-        "Has_Children": "Has Children",
-        "Under_30": "Under 30",
-        "Over_50": "Over 50",
+        "Nobel_Prize_Winner": "Nobel_Prize_Winner",
+        "On_Instagram": "On_Instagram",
+        "Has_Children": "Has_Children",
+        "Under_30": "Under_30",
+        "Over_50": "Over_50",
         "Married": "Married",
         "White": "White",
         "Black": "Black",
@@ -97,7 +97,7 @@ def get_answer():
         "Deceased": "Deceased",
         "Divorced": "Divorced",
         "Millionaire": "Millionaire",
-        "Been_in_a_Movie": "Been in a Movie"
+        "Been_in_a_Movie": "Been_in_a_Movie"
     }
 
     column_name = attribute_map.get(attribute_key)
