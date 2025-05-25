@@ -75,6 +75,17 @@ def init_db():
     ('Tom Holland', 'yes', 'yes', 'no', 'yes', 'no', 'yes', 'no', 'yes', 'no', 'yes', 'no', 'no', 'yes', 'no', 'no', 'no', 'no', 'no', 'yes', 'yes'),
     ('Tom Cruise', 'yes', 'yes', 'no', 'yes', 'no', 'yes', 'no', 'yes', 'yes', 'no', 'yes', 'no', 'yes', 'no', 'no', 'no', 'no', 'no', 'yes', 'yes')
     ]
+    # Highscore table
+    c.execute('''
+        CREATE TABLE IF NOT EXISTS highscore (
+            id INTEGER PRIMARY KEY,
+            score INTEGER NOT NULL
+        )
+    ''')
+
+    # Initialize with score = 0 if not set
+    c.execute('INSERT OR IGNORE INTO highscore (id, score) VALUES (1, 0)')
+
 
     c.executemany('''
         INSERT OR IGNORE INTO celebrities (Name, Male, Alive, Musician, Actor, Sportsperson, American, Nobel_Prize_Winner, On_Instagram, Has_Children, Under_30, Over_50, Married, White, Black, Female, Model, Deceased, Divorced, Millionaire, Been_in_a_Movie) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
