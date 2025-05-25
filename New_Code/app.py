@@ -31,7 +31,7 @@ def index():
             session["winner"] = True
 
             # Update highscore if current guess_count is greater
-            if session["guess_count"] > highscore:
+            if session["guess_count"] < highscore:
                 highscore = session["guess_count"]
                 c.execute("UPDATE highscore SET score = ? WHERE id = 1", (highscore,))
                 conn.commit()
