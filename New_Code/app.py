@@ -44,7 +44,7 @@ def index():
 
 @app.route("/reset")
 def reset():
-    conn = db_connection()
+    conn = db.db_connection()
     conn.execute("DELETE FROM guesses")
     conn.commit()
     conn.close()
