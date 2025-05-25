@@ -28,7 +28,8 @@ body {
     position: absolute;
     top: 0px;
     width: 100%;
-    text-align: center;
+    text-align: right;
+    margin-right: 27%;
     z-index: 1000;
 }
 
