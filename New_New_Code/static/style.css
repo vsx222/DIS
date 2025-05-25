@@ -8,28 +8,27 @@ body {
     background: url('/static/pictures/clean.png') no-repeat center center fixed;
     background-size: cover;
     margin: 0;
+    min-height: 100vh;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
     flex-direction: column;
     position: relative;
 }
 
-/* Keep body content vertically/horizontally centered */
 .main-body {
     flex: 1;
+    width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;  /* Aligns container to the right */
     align-items: center;
 }
 
 .top-logo {
     position: absolute;
-    top: 0px;
+    top: 15px;
+    right: 20px;
     width: 100%;
     text-align: right;
-    margin-right: 27%;
+    margin-right: 22%;
     z-index: 1000;
 }
 
@@ -39,12 +38,14 @@ body {
     display: inline-block;
 }
 
-/* Keep existing content styling */
-.center-container {
+/* Keep internal content centered */
+.container {
     text-align: center;
+    margin-right: 20%;
+    margin-left: 60%;
 }
 
-.container {
+.center-container {
     text-align: center;
 }
 
@@ -58,22 +59,39 @@ li {
     margin: 0.5rem 0;
 }
 
-
 .grid-gallery {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     gap: 10px;
     max-width: 90vw;
-    padding: 20px;
+    padding: 50px;
     position: absolute;
     top: 0;
     left: 0;
+    margin-left: 20px;
 }
 
 .grid-gallery img {
-    width: 100%;    /* make the image fit the grid cell */
-    height: auto;   /* maintain aspect ratio */
-    max-height: 175px;     /* Adjust this value as needed */
-    object-fit: cover; /* crop if needed to fill */
-    border-radius: 8px; /* optional, for rounded corners */
+    width: 100%;
+    height: auto;
+    max-height: 175px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Styled Reset Button */
+a.btn {
+    color: white;                   /* White text */
+    background-color: #1f2a8a;      /* Deep blue background */
+    border: 2px solid #f8e45c;      /* Yellow border */
+    border-radius: 10px;            /* Rounded edges */
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+a.btn:hover {
+    background-color: #17206c;      /* Slightly darker blue on hover */
 }
