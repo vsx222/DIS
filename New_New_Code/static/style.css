@@ -1,0 +1,58 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: sans-serif;
+}
+
+body {
+    background: url('/static/pictures/clean.png') no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    position: relative;
+}
+
+/* Keep body content vertically/horizontally centered */
+.main-body {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.top-logo {
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    text-align: center;
+    z-index: 1000;
+}
+
+.top-logo img {
+    max-height: 220px;
+    width: auto;
+    display: inline-block;
+}
+
+/* Keep existing content styling */
+.center-container {
+    text-align: center;
+}
+
+.container {
+    text-align: center;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 1rem;
+}
+
+li {
+    margin: 0.5rem 0;
+}
