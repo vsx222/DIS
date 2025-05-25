@@ -1,0 +1,143 @@
+<!doctype html>
+<html>
+<head>
+    <title>Guess Who</title>
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+
+<body>
+    <!-- Logo -->
+    <div class="top-logo">
+        <img src="../static/pictures/logo.png" alt="Logo" />
+    </div>
+
+    <!-- Score under logo -->
+    <div class="score-box">
+        <div class="guess-align">
+            <h3>Number of Guesses: {{ guess_count }}</h3> <!-- eksempel -->
+        </div>
+        <div class="high-align">
+            <h3>Highscore: {{ highscore }}</h3>
+        </div>
+    </div>
+
+    <!-- Dropdown-menu -->
+    <div class="dropdown-box">
+        <div class="ask-align">
+            <h3>Ask a Question About the Celebrity</h3>
+        </div>
+
+        <select id="questionDropdown">
+            <option value="Male">Is the person a male?</option>
+            <option value="Alive">Is the person alive?</option>
+            <option value="Musician">Is the person a musician?</option>
+            <option value="Actor">Is the person an actor?</option>
+            <option value="Sportsperson">Is the person a sportsperson?</option>
+            <option value="American">Is the person American?</option>
+            <option value="Nobel_Prize_Winner">Is the person a Nobel Prize winner?</option>
+            <option value="On_Instagram">Is the person on Instagram?</option>
+            <option value="Has_Children">Does the person have children?</option>
+            <option value="Under_30">Is the person under 30 years old?</option>
+            <option value="Over_50">Is the person over 50 years old?</option>
+            <option value="Married">Is the person married?</option>
+            <option value="White">Is the person white?</option>
+            <option value="Black">Is the person Black?</option>
+            <option value="Female">Is the person a female?</option>
+            <option value="Model">Is the person a model?</option>
+            <option value="Deceased">Is the person deceased?</option>
+            <option value="Divorced">Is the person divorced?</option>
+            <option value="Millionaire">Is the person a millionaire?</option>
+            <option value="Been_in_a_Movie">Has the person been in a movie?</option>
+        </select>
+
+        <button class="btn" onclick="askQuestion()">Get Answer</button>
+        <p id="answerDisplay"></p>
+    </div>
+
+    <!-- Guess input + besked -->
+    <div class="guess-box">
+        <form method="POST" action="/">
+            <input type="text" name="new_guess" placeholder="Guess the celebrity" class="form-input" required>
+            <input type="submit" value="Guess" class="btn">
+        </form>
+
+        {% if winner is not none %}
+            {% if winner %}
+                <p style="color: green;"><strong>Correct! The celebrity was {{ guesses[-1]['guess_text'] }}</strong></p>
+            {% else %}
+                <p style="color: red;"><strong>Wrong guess! Try again.</strong></p>
+            {% endif %}
+        {% endif %}
+    </div>
+
+    <!-- Restart-knap -->
+    <div class="restart-box">
+        <a href="/reset" class="btn" onclick="sessionStorage.clear()">Restart Game</a>
+    </div>
+
+    <!-- Tidligere gæt nederst i højre hjørne -->
+    <div class="results-box">
+        {% if guesses %}
+            <h4>Your Guesses:</h4>
+            <p>{{ guesses | map(attribute='guess_text') | join(', ') }}</p>
+        {% endif %}
+    </div>
+
+    <!-- Galleri med kendte -->
+    <div class="container center-container">
+        <div class="grid-gallery">
+            {% for i in range(1, 25) %}
+                <div class="img-wrapper" onclick="reveal(this)">
+                    <img src="{{ url_for('static', filename='pictures/celebrities/Kendt' ~ i ~ '.png') }}" alt="Kendt {{ i }}">
+                    <img class="overlay" src="{{ url_for('static', filename='pictures/celebrities/Bagsideny.png') }}">
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        function askQuestion() {
+            const attribute = document.getElementById("questionDropdown").value;
+            fetch("/get_answer", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ attribute })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.answer !== undefined) {
+                    document.getElementById("answerDisplay").innerText = "Answer: " + data.answer;
+                } else {
+                    document.getElementById("answerDisplay").innerText = "Error: " + data.error;
+                }
+            });
+        }
+
+        function reveal(wrapper) {
+            const overlay = wrapper.querySelector(".overlay");
+            const index = Array.from(document.querySelectorAll('.img-wrapper')).indexOf(wrapper);
+            let revealed = JSON.parse(sessionStorage.getItem('revealed') || '[]');
+
+            if (revealed.includes(index)) {
+                overlay.style.display = "none";
+                revealed = revealed.filter(i => i !== index);
+            } else {
+                overlay.style.display = "block";
+                revealed.push(index);
+            }
+
+            sessionStorage.setItem('revealed', JSON.stringify(revealed));
+        }
+
+        window.onload = function () {
+            const revealed = JSON.parse(sessionStorage.getItem('revealed') || '[]');
+            const wrappers = document.querySelectorAll('.img-wrapper');
+            revealed.forEach(index => {
+                const overlay = wrappers[index]?.querySelector(".overlay");
+                if (overlay) overlay.style.display = "block";
+            });
+        }
+    </script>
+</body>
+</html>
