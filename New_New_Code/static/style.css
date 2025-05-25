@@ -56,3 +56,23 @@ ul {
 li {
     margin: 0.5rem 0;
 }
+
+
+.grid-gallery {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+    max-width: 90vw;
+    padding: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.grid-gallery img {
+    width: 100%;    /* make the image fit the grid cell */
+    height: auto;   /* maintain aspect ratio */
+    max-height: 175px;     /* Adjust this value as needed */
+    object-fit: cover; /* crop if needed to fill */
+    border-radius: 8px; /* optional, for rounded corners */
+}

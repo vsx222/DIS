@@ -14,7 +14,13 @@
     <!-- Main Content -->
     <div class="container center-container">
         <h2>Ask a Question About the Celebrity</h2>
-
+       
+        <!-- Celebrities grid -->
+        <div class="grid-gallery">
+            {% for i in range(1, 25) %}
+                <img src="{{ url_for('static', filename='pictures/celebrities/Kendt' ~ i ~ '.png') }}" alt="Kendt {{ i }}">
+            {% endfor %}
+        </div>
         <select id="questionDropdown">
             <option value="Male">Is the person a male?</option>
             <option value="Alive">Is the person alive?</option>
