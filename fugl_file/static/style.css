@@ -1,0 +1,230 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: sans-serif;
+}
+
+body {
+    background: url('/static/pictures/clean.png') no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+    min-height: 100vh;
+    display: block;
+    position: relative;
+}
+
+/* Logo i øverste højre hjørne */
+.top-logo {
+    position: absolute;
+    top: 20px;
+    right: 10%;
+    z-index: 1000;
+}
+
+.top-logo img {
+    max-height: 250px;
+    height: auto;
+    width: auto;
+    display: block;
+}
+
+/* Scorebox under logo */
+.score-box {
+    position: absolute;
+    top: 300px;
+    right: 14%;
+    text-align: center;
+    z-index: 999;
+    width: max-content;
+}
+
+
+.score-box h3 {
+    margin: 4px 0;
+    padding: 0;
+}
+
+/* Dropdown-box under score */
+.dropdown-box {
+    position: absolute;
+    top: 240px;
+    right: 8%;
+    text-align: center;
+    z-index: 998;
+}
+
+.dropdown-box select,
+.dropdown-box button {
+    margin-top: 8px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.dropdown-box h3 {
+    margin: 4px 0;
+    padding: 0;
+}
+
+/* Guess-input under dropdown */
+.guess-box {
+    position: absolute;
+    top: 470px;  /* ca. 120px under top (dropdown ligger ved 240px) */
+    right: 14.5%;
+    text-align: center;
+    z-index: 997;
+}
+
+
+.guess-box input[type="text"],
+.guess-box input[type="submit"] {
+    margin-top: 8px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Align score elements */
+.guess-align, .high-align {
+    margin: 0;
+}
+
+/* Galleri med kendte */
+.grid-gallery {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+    max-width: 90vw;
+    padding: 20px;
+    position: absolute;
+    top: 7%;
+    left: 0;
+}
+
+.grid-gallery img {
+    width: 100%;
+    height: auto;
+    max-height: 175px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Wrapper til billeder og overlays */
+.img-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    overflow: hidden;
+}
+
+.img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+}
+
+.img-wrapper img.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+    z-index: 2;
+}
+
+/* Midtercentreret indhold (brugt til resten af layoutet) */
+.main-body {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.center-container {
+    text-align: center;
+}
+
+.container {
+    text-align: center;
+    padding-top: 150px;
+}
+
+/* Spørgsmålstekst (ubrugt men beholdt) */
+.ask-align {
+    text-align: center;
+    margin-top: 130px;   /* justér højden ned på skærmen */
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    white-space: nowrap;  /* sikrer én linje */
+    font-size: 1.2rem;     /* evt. lidt større tekst */
+}
+
+/* Lister */
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 1rem;
+}
+
+li {
+    margin: 0.5rem 0;
+}
+
+.restart-box {
+    position: absolute;
+    top: 800px; /* ca. 60-70px under guess-box */
+    right: 16%;
+    text-align: center;
+    z-index: 996;
+}
+
+.restart-box .btn {
+    margin-top: 10px;
+}
+
+
+.results-box {
+    position: absolute;
+    top: 580px;           /* fast placering under .restart-box */
+    right: 17%;
+    text-align: left;
+    z-index: 995;
+    max-width: 100px;
+    white-space: normal;
+    word-wrap: break-word;
+}
+
+
+
+.results-box p {
+    font-size: 0.70rem;   /* Gør teksten mindre – du kan justere tallet */
+    line-height: 1.3;
+}
+
+.results-box h4 {
+    margin: 4px 0;
+}
+
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: white;
+    background-color: #1226dd;     /* flot grøn */
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.btn:hover {
+    background-color: #1226dd;     /* lidt mørkere grøn ved hover */
+    transform: scale(1.05);        /* lille zoom-effekt */
+}
+
+
