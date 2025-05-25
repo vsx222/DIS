@@ -24,23 +24,24 @@ body {
 
 .top-logo {
     position: absolute;
-    top: 15px;
-    right: 20px;
+    top: 5%;
+    right: 1.5%;
     width: 100%;
     text-align: right;
-    margin-right: 22%;
+    margin-right: 21%;
     z-index: 1000;
 }
 
 .top-logo img {
     max-height: 220px;
-    width: auto;
+    width: 15%;
     display: inline-block;
 }
 
 /* Keep internal content centered */
 .container {
     text-align: center;
+    margin-top: 9%;
     margin-right: 20%;
     margin-left: 60%;
 }
