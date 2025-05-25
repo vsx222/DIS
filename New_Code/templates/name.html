@@ -12,12 +12,14 @@
             <input type="text" name="new_guess" placeholder="Guess the celebrity" class="form-input" required>
             <input type="submit" value="Guess" class="btn">
         </form>
-        <h3>Guess Count: {{ guess_count }}</h3>
+        
+        
+
 
         {% if winner is not none %}
-            {% if winner %}
+            {% if winner and guesses and guesses|length > 0 %}
                 <p style="color: green;"><strong>Correct! The celebrity was {{ guesses[-1]['guess_text'] }}</strong></p>
-            {% else %}
+            {% elif not winner %}
                 <p style="color: red;"><strong>Wrong guess! Try again.</strong></p>
             {% endif %}
         {% endif %}
@@ -29,6 +31,8 @@
         </ul>
         
         <a href="/reset" class="btn">Restart Game</a>
+        <h3>Guess Count: {{ guess_count }}</h3>
+        <h3>Highscore: {{ highscore }}</h3>
     
     </div>
 </body>
