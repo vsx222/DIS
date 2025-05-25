@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+    <title>Guess Who</title>
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+    <div class="container center-container">
+        <h2 class="Logo">Guess Who (Celebrity Edition)</h2>
+        <br>
+        <form method="POST" action="/">
+            <input type="text" name="new_guess" placeholder="Guess the celebrity" class="form-input" required>
+            <input type="submit" value="Guess" class="btn">
+        </form>
+        <h3>Guess Count: {{ guess_count }}</h3>
+
+        {% if winner is not none %}
+            {% if winner %}
+                <p style="color: green;"><strong>Correct! The celebrity was {{ guesses[-1]['guess_text'] }}</strong></p>
+            {% else %}
+                <p style="color: red;"><strong>Wrong guess! Try again.</strong></p>
+            {% endif %}
+        {% endif %}
+        
+        <ul>
+            {% for guess in guesses %}
+                <li>{{ guess['guess_text'] }}</li>
+            {% endfor %}
+        </ul>
+        
+        <a href="/reset" class="btn">Restart Game</a>
+    
+    </div>
+</body>
+</html>
