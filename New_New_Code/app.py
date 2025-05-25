@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, session
+from flask import Flask, render_template, request, redirect, session, jsonify
 import db
 
 app = Flask(__name__)
@@ -63,3 +63,61 @@ def reset():
     conn.close()
     session.clear()  # Clears the stored target celebrity and guess count
     return redirect("/")  # Redirects back to the main page
+
+
+@app.route("/get_answer", methods=["POST"])
+def get_answer():
+    from flask import jsonify
+    import json
+    conn = db.db_connection()
+    conn.row_factory = db.sqlite3.Row
+    c = conn.cursor()
+
+    data = request.get_json()
+    attribute_key = data.get("attribute")
+
+    # Map dropdown values to actual database column names
+    attribute_map = {
+        "Male": "Male",
+        "Alive": "Alive",
+        "Musician": "Musician",
+        "Actor": "Actor",
+        "Sportsperson": "Sportsperson",
+        "American": "American",
+        "Nobel_Prize_Winner": "Nobel Prize Winner",
+        "On_Instagram": "On Instagram",
+        "Has_Children": "Has Children",
+        "Under_30": "Under 30",
+        "Over_50": "Over 50",
+        "Married": "Married",
+        "White": "White",
+        "Black": "Black",
+        "Female": "Female",
+        "Model": "Model",
+        "Deceased": "Deceased",
+        "Divorced": "Divorced",
+        "Millionaire": "Millionaire",
+        "Been_in_a_Movie": "Been in a Movie"
+    }
+
+    column_name = attribute_map.get(attribute_key)
+    if not column_name:
+        return jsonify({"error": "Invalid attribute selected"}), 400
+
+    celeb_name = session.get("target_celebrity")
+    if not celeb_name:
+        return jsonify({"error": "No target celebrity in session"}), 400
+
+    celeb = c.execute("SELECT * FROM celebrities WHERE Name = ?", (celeb_name,)).fetchone()
+    conn.close()
+
+    if not celeb or column_name not in celeb.keys():
+        return jsonify({"error": "Invalid column or celebrity not found"}), 404
+
+    # ✅ Increment guess/question count
+    session["guess_count"] = session.get("guess_count", 0) + 1
+
+    answer = celeb[column_name]
+    return jsonify({"answer": str(answer)})
+
+
