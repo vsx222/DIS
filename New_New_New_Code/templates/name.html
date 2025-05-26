@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+<head>
+    <title>Guess Who</title>
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+
+<body>
+    <!-- Logo at Top -->
+    <div class="top-logo">
+        <img src="../static/pictures/logo.png" alt="Logo" />
+    </div>
+
+    <!-- Main Body to align content right -->
+    <div class="main-body">
+        <div class="container center-container">
+            <h2>Ask a Question About the Celebrity</h2>
+
+            <!-- Celebrities grid -->
+            <div class="grid-gallery">
+                {% for i in range(1, 25) %}
+                    <img src="{{ url_for('static', filename='pictures/celebrities/Kendt' ~ i ~ '.png') }}" alt="Kendt {{ i }}">
+                {% endfor %}
+            </div>
+
+            <!-- Dynamic dropdown from app.py -->
+            <select id="questionDropdown">
+                {% for value, label in question_options %}
+                    <option value="{{ value }}">{{ label }}</option>
+                {% endfor %}
+            </select>
+
+            <button onclick="askQuestion()">Get Answer</button>
+            <p id="answerDisplay"></p>
+
+            <script>
+                function askQuestion() {
+                    const attribute = document.getElementById("questionDropdown").value;
+                    fetch("/get_answer", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ attribute })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        const answerEl = document.getElementById("answerDisplay");
+                        if (data.answer !== undefined) {
+                            answerEl.innerText = `Answer: ${data.answer}`;
+                            document.getElementById("guessCounter").innerText = `Guess and Question Count: ${data.guess_count}`;
+                        } else {
+                            answerEl.innerText = `Error: ${data.error}`;
+                        }
+                    });
+                }
+            </script>
+
+            <!-- Guess submission form -->
+            <form method="POST" action="/">
+                <input type="text" name="new_guess" placeholder="Guess the celebrity" class="form-input" required>
+                <input type="submit" value="Guess" class="btn">
+            </form>
+
+            <!-- Guess and question count updated dynamically -->
+            <h3 id="guessCounter">Guess and Question Count: {{ guess_count }}</h3>
+            <h3>Highscore: {{ highscore }}</h3>
+
+            {% if winner is not none %}
+                {% if winner %}
+                    <p style="color: green;"><strong>Correct! The celebrity was {{ guesses[-1]['guess_text'] }}</strong></p>
+                {% else %}
+                    <p style="color: red;"><strong>Wrong guess! Try again.</strong></p>
+                {% endif %}
+                <br>
+                <h4>Your Guesses:</h4>
+            {% endif %}
+            
+            <p>
+                {{ guesses | map(attribute='guess_text') | join(', ') }}
+            </p>
+
+            <a href="/reset" class="btn">Restart Game</a>
+        </div>
+    </div>
+</body>
+</html>
