@@ -47,18 +47,18 @@
             <h3>Highscore: {{ highscore }}</h3>
 
             {% if winner is not none %}
-                {% if winner %}
-                    <p style="color: green;"><strong>Correct! The celebrity was {{ guesses[-1]['guess_text'] }}</strong></p>
-                {% else %}
-                    <p style="color: red;"><strong>Wrong guess! Try again.</strong></p>
-                {% endif %}
-                <br>
-                <h4>Your Guesses:</h4>
+            {% if winner and guesses %}
+                <p style="color: green;"><strong>Correct! The celebrity was {{ guesses[guesses|length - 1]['guess_text'] }}</strong></p>
+            {% elif not winner %}
+                <p style="color: red;"><strong>Wrong guess! Try again.</strong></p>
             {% endif %}
-            
-            <p>
-                {{ guesses | map(attribute='guess_text') | join(', ') }}
-            </p>
+            <br>
+            <h4>Your Guesses:</h4>
+        {% endif %}
+        
+        <p>
+            {{ guesses | map(attribute='guess_text') | join(', ') }}
+        </p>
 
             <a href="/reset" class="btn" onclick="sessionStorage.clear()">Restart Game</a>
         </div>
