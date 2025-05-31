@@ -6,23 +6,14 @@
 </head>
 
 <body>
-    <!-- Logo at Top -->
-    <div class="top-logo">
-        <img src="../static/pictures/logo.png" alt="Logo" />
-    </div>
+    <!-- Grouped logo and container into one layout unit -->
+    <div class="content-box">
+        <!-- Logo at Top -->
+        <div class="top-logo">
+            <img src="../static/pictures/logo.png" alt="Logo" />
+        </div>
 
-    <!-- Celebrities grid with flip-on-click functionality -->
-    <div class="grid-gallery">
-        {% for i in range(1, 25) %}
-            <div class="img-wrapper" onclick="reveal(this)">
-                <img src="{{ url_for('static', filename='pictures/celebrities/Kendt' ~ i ~ '.png') }}" alt="Kendt {{ i }}">
-                <img class="overlay" src="{{ url_for('static', filename='pictures/celebrities/Bagsideny.png') }}">
-            </div>
-        {% endfor %}
-    </div>
-
-    <!-- Main Body to align content right -->
-    <div class="main-body">
+        <!-- Right-side content box -->
         <div class="container center-container">
             <h2>Ask a Question About the Celebrity</h2>
 
@@ -62,6 +53,16 @@
 
             <a href="/reset" class="btn" onclick="sessionStorage.clear()">Restart Game</a>
         </div>
+    </div>
+
+    <!-- Celebrities grid with flip-on-click functionality -->
+    <div class="grid-gallery">
+        {% for i in range(1, 25) %}
+            <div class="img-wrapper" onclick="reveal(this)">
+                <img src="{{ url_for('static', filename='pictures/celebrities/Kendt' ~ i ~ '.png') }}" alt="Kendt {{ i }}">
+                <img class="overlay" src="{{ url_for('static', filename='pictures/celebrities/Bagsideny.png') }}">
+            </div>
+        {% endfor %}
     </div>
 
     <!-- JavaScript functions -->
