@@ -17,7 +17,7 @@ body {
 /* Grouping box for logo and content, aligned to the right */
 .content-box {
     position: absolute;
-    top: 0;
+    top: -6.5%;
     right: 5%;
     margin-top: 7%;
     display: flex;
@@ -31,7 +31,7 @@ body {
     text-align: center;
     width: 100%;
     margin-bottom: 1rem;
-    margin-right: 40%;
+    margin-right: 80%;
 }
 
 .top-logo img {
@@ -44,11 +44,11 @@ body {
 /* Content form box - bigger and with padding */
 .container {
     text-align: center;
-    padding: 20px 30px;
+    padding: 5% 10%;
     background-color: rgba(242, 223, 141, 0.65); /* Optional background */
-    border-radius: 12px;
-    margin-right: 40%;
-    max-width: 420px;
+    border-radius: 5%;
+    margin-right: 80%;
+    max-width: 100%;
     z-index: 0;
 }
 
