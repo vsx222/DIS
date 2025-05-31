@@ -31,6 +31,7 @@ body {
     text-align: center;
     width: 100%;
     margin-bottom: 1rem;
+    margin-right: 40%;
 }
 
 .top-logo img {
@@ -46,6 +47,7 @@ body {
     padding: 20px 30px;
     background-color: rgba(242, 223, 141, 0.65); /* Optional background */
     border-radius: 12px;
+    margin-right: 40%;
     max-width: 420px;
     z-index: 0;
 }
@@ -60,7 +62,7 @@ body {
     grid-template-columns: repeat(6, 1fr);
     gap: 1.5%;
     max-width: 1000px;
-    width: 50%; /* Reduced width */
+    width: 42%; /* Reduced width */
     padding: 3.5%;
     position: absolute;
     top: 0%;
