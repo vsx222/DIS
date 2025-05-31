@@ -22,8 +22,8 @@ When the web app is running:
 
 * You can visually eliminate celebrities who no longer match the traits — just like in the classic “Guess Who?” game.
 
-* Once you're confident, enter a name in the “Guess Celebrity” input field. You’ll be told immediately whether your guess is correct or not.
+* When you are confident, enter a name in the “Guess Celebrity” input field. You’ll be told immediately whether your guess is correct or not.
 
-* Click “Restart Game” at any time to reset the game, clear guesses, and start fresh with a new mystery celebrity.
+* Click “Restart Game” at any time to reset the game, clear guesses, and start fresh with a new mysterious celebrity.
 
 * Every guess you make is stored and displayed on the page for easy tracking.
