@@ -31,6 +31,7 @@ Run in terminal the following:
 	source .venv/bin/activate
 	pip install flask
 	flask run --debug  
+ 	flask run --debugger (ON MAC)
 
 
 ON WINDOWS
