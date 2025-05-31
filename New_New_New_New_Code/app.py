@@ -1,12 +1,30 @@
 from flask import Flask, render_template, request, redirect, session, jsonify
 import db
 import sqlite3
+import re
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'
 
 # Initialize the database
 db.init_db()
+
+# ✅ Regex-based guess checker (first 7 characters must match)
+def is_guess_correct_regex(user_guess, correct_name):
+    user_guess = user_guess.strip().lower()
+    correct_name = correct_name.strip().lower()
+
+    # Use only the first 7 characters of the correct name
+    prefix = correct_name[:7]
+
+    # Escape special characters and allow flexible whitespace
+    pattern = re.escape(prefix)
+    pattern = pattern.replace(r"\ ", r"\s+")
+
+    # Match the beginning of the guess with the pattern, rest can be anything
+    pattern = r'^' + pattern + r'.*'
+
+    return re.match(pattern, user_guess, re.IGNORECASE) is not None
 
 # List of supported question options (value, label)
 QUESTION_OPTIONS = [
@@ -27,7 +45,6 @@ QUESTION_OPTIONS = [
     ("Over_50", "Is the person over 50 years old?"),
     ("Married", "Is the person married?"),
 
-    # ✅ Movie-related questions
     ("movie:Harry Potter", "Has the person appeared in Harry Potter?"),
     ("movie:Once Upon a Time in Hollywood", "Has the person appeared in Once Upon a Time in Hollywood?"),
     ("movie:Don't Look Up", "Has the person appeared in Don't Look Up?"),
@@ -59,7 +76,8 @@ def index():
         session["guess_count"] += 1
         conn.commit()
 
-        if guess.lower().strip() == session["target_celebrity"].lower():
+        # ✅ Updated to use regex-based matching on first 7 characters
+        if is_guess_correct_regex(guess, session["target_celebrity"]):
             session["winner"] = True
             if session["guess_count"] < highscore or highscore == 0:
                 highscore = session["guess_count"]
@@ -81,7 +99,8 @@ def index():
         guess_count=session.get("guess_count", 0),
         winner=session.get("winner", None),
         highscore=highscore,
-        question_options=QUESTION_OPTIONS
+        question_options=QUESTION_OPTIONS,    
+        correct_name=session.get("target_celebrity")  # ← Add this line
     )
 
 @app.route("/reset")
@@ -110,11 +129,9 @@ def get_answer():
     if not celeb:
         return jsonify({"error": "Celebrity not found"}), 404
 
-    # ✅ Increment question count for all questions
     session["guess_count"] = session.get("guess_count", 0) + 1
     guess_count = session["guess_count"]
 
-    # === Logic-based answers ===
     if attribute_key == "Male":
         return jsonify({"answer": "Yes" if celeb["Gender"] == "Male" else "No", "guess_count": guess_count})
     elif attribute_key == "Female":
@@ -130,7 +147,6 @@ def get_answer():
     elif attribute_key == "Over_50":
         return jsonify({"answer": "Yes" if celeb["Age"] > 50 else "No", "guess_count": guess_count})
 
-    # Profession questions
     elif attribute_key in [
         "Actor", "Musician", "Dancer", "Football player", "Professional cyclist",
         "President", "TV host", "Entrepreneur", "Reality TV-star"
@@ -141,7 +157,6 @@ def get_answer():
         ''', (celeb_name, attribute_key)).fetchone()
         return jsonify({"answer": "Yes" if result else "No", "guess_count": guess_count})
 
-    # Movie questions (fixed)
     elif attribute_key.startswith("movie:"):
         movie_title = attribute_key.replace("movie:", "")
         result = c.execute('''
@@ -151,6 +166,5 @@ def get_answer():
         ''', (celeb_name, movie_title)).fetchone()
         return jsonify({"answer": "Yes" if result else "No", "guess_count": guess_count})
 
-    # Unknown
     else:
         return jsonify({"error": f"Unknown attribute: {attribute_key}"})

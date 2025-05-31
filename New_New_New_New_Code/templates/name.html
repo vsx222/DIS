@@ -48,7 +48,7 @@
 
             {% if winner is not none %}
             {% if winner and guesses %}
-                <p style="color: green;"><strong>Correct! The celebrity was {{ guesses[guesses|length - 1]['guess_text'] }}</strong></p>
+                <p style="color: green;"> <strong>Correct! The celebrity was {{ correct_name }}</strong></p>
             {% elif not winner %}
                 <p style="color: red;"><strong>Wrong guess! Try again.</strong></p>
             {% endif %}
