@@ -96,3 +96,17 @@ a.btn {
 a.btn:hover {
     background-color: #17206c;      /* Slightly darker blue on hover */
 }
+
+.fixed-window {
+    width: 1280px;
+    height: 720px;
+    margin: auto;
+    position: relative;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    background-color: rgba(255, 255, 255, 0.9); /* optional semi-transparent background */
+    overflow: auto;
+}
