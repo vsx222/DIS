@@ -7,7 +7,6 @@ A simple Flask-based web app where you guess a randomly selected celebrity based
 
 ## E/R Diagram
 
-This project uses two tables in a SQLite database (`guess.db`):
 ---
 
 ## How to compile the web-app from source (incl. scripts to initialize the database)
