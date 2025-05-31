@@ -17,7 +17,7 @@ body {
 /* Grouping box for logo and content, aligned to the right */
 .content-box {
     position: absolute;
-    top: 0;
+    top: -7.5%;
     right: 5%;
     margin-top: 7%;
     display: flex;
