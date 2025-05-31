@@ -56,15 +56,16 @@ body {
 .grid-gallery {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    gap: 1%;
+    gap: 1.2%;
     max-width: 90vw;
+    width: 40%;
     padding: 3.5%;
     position: absolute;
-    top: 0;
+    top: 0%;
     left: 0;
     margin-left: 5%;
     margin-right: 50%;
-    z-index: 1001; /* Above container */
+    z-index: 1001;
 }
 
 .grid-gallery img {
