@@ -30,6 +30,15 @@ def is_guess_correct_regex(user_guess, correct_name):
 QUESTION_OPTIONS = [
     ("Male", "Is the person a male?"),
     ("Female", "Is the person a female?"),
+    ("Eye_Blue", "Does the person have blue eyes?"),
+    ("Eye_Green", "Does the person have green eyes?"),
+    ("Eye_Brown", "Does the person have brown eyes?"),
+    ("On_Instagram", "Is the person on Instagram?"),
+    ("Has_Children", "Does the person have children?"),
+    ("Under_30", "Is the person under 30 years old?"),
+    ("Over_50", "Is the person over 50 years old?"),
+    ("Married", "Is the person married?"),
+
     ("Musician", "Is the person a musician?"),
     ("Actor", "Is the person an actor?"),
     ("Dancer", "Is the person a dancer?"),
@@ -39,11 +48,6 @@ QUESTION_OPTIONS = [
     ("TV host", "Is the person a TV host?"),
     ("Entrepreneur", "Is the person an entrepreneur?"),
     ("Reality TV-star", "Is the person a reality TV-star?"),
-    ("On_Instagram", "Is the person on Instagram?"),
-    ("Has_Children", "Does the person have children?"),
-    ("Under_30", "Is the person under 30 years old?"),
-    ("Over_50", "Is the person over 50 years old?"),
-    ("Married", "Is the person married?"),
 
     ("movie:Harry Potter", "Has the person appeared in Harry Potter?"),
     ("movie:Once Upon a Time in Hollywood", "Has the person appeared in Once Upon a Time in Hollywood?"),
@@ -166,5 +170,12 @@ def get_answer():
         ''', (celeb_name, movie_title)).fetchone()
         return jsonify({"answer": "Yes" if result else "No", "guess_count": guess_count})
 
+    elif attribute_key == "Eye_Blue":
+        return jsonify({"answer": "Yes" if celeb["Eye_Color"].lower() == "blue" else "No", "guess_count": guess_count})
+    elif attribute_key == "Eye_Green":
+        return jsonify({"answer": "Yes" if celeb["Eye_Color"].lower() == "green" else "No", "guess_count": guess_count})
+    elif attribute_key == "Eye_Brown":
+        return jsonify({"answer": "Yes" if celeb["Eye_Color"].lower() == "brown" else "No", "guess_count": guess_count})
+   
     else:
         return jsonify({"error": f"Unknown attribute: {attribute_key}"})
