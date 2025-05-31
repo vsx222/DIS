@@ -17,6 +17,7 @@ Celebrities are connected to Movies through the relationship "Has appeared in", 
 On the other side, celebrities are also connected to their Profession through the relationship "Famous for", which helps specify what they are known for professionally—such as acting, singing, or directing. Each profession has a name to describe it.
 
 Overall, this diagram paints a clear picture of how a celebrity’s personal details, career highlights, and movie appearances are related, making it a useful model for managing information in entertainment databases or media platforms.
+
 ---
 
 ## How to compile the web-app from source (incl. scripts to initialize the database)
