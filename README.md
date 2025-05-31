@@ -1,7 +1,7 @@
 # Guess Who — Celebrity Web App (Documentation)
 ### Created by Caroline Busk (cxb190), Christoffer Fugl (kjq112), Trine Ibsen (jvs273) \& Max Marius Toft (vsx222)
 
-A simple Flask-based web app where you guess a randomly selected celebrity based on name input. Built with Python, SQLite, HTML/CSS, and Docker.
+A simple Flask-based web app where you guess a randomly selected celebrity based on name input. Built with Python, SQLite and HTML/CSS.
 
 ---
 
@@ -21,6 +21,28 @@ Overall, this diagram paints a clear picture of how a celebrity’s personal det
 ---
 
 ## How to compile the web-app from source (incl. scripts to initialize the database)
+
+Navigate to the project directory in  terminal:
+
+ON MAC/LINUX:
+Run in terminal the following:
+
+	python -m venv .venv
+	source .venv/bin/activate
+	pip install flask
+	flask run --debug  
+
+
+ON WINDOWS
+Run in terminal the following:
+
+	python -m venv .venv
+	Set-ExecutionPolicy Unrestricted -Scope Process
+	.venv\Scripts\activate
+	pip install flask
+	flask run --debug  
+
+
 ---
 
 ## How to run and interact with your web-app?
