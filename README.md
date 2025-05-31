@@ -15,14 +15,14 @@ A simple Flask-based web app where you guess a randomly selected celebrity based
 ## How to run and interact with your web-app?
 When the web app is running:
 
-The app automatically selects a random celebrity as the target.
+* The app automatically selects a random celebrity as the target.
 
-You begin by asking questions and receiving answers to help narrow down the possible options.
+* You begin by asking questions and receiving answers to help narrow down the possible options.
 
-You can visually eliminate celebrities who no longer match the traits — just like in the classic “Guess Who?” game.
+* You can visually eliminate celebrities who no longer match the traits — just like in the classic “Guess Who?” game.
 
-Once you're confident, enter a name in the “Guess Celebrity” input field. You’ll be told immediately whether your guess is correct or not.
+* Once you're confident, enter a name in the “Guess Celebrity” input field. You’ll be told immediately whether your guess is correct or not.
 
-Click “Restart Game” at any time to reset the game, clear guesses, and start fresh with a new mystery celebrity.
+* Click “Restart Game” at any time to reset the game, clear guesses, and start fresh with a new mystery celebrity.
 
-Every guess you make is stored and displayed on the page for easy tracking.
+* Every guess you make is stored and displayed on the page for easy tracking.
