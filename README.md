@@ -24,6 +24,6 @@ When the web app is running:
 
 * When you are confident, enter a name in the “Guess Celebrity” input field. You’ll be told immediately whether your guess is correct or not.
 
-* Click “Restart Game” at any time to reset the game, clear guesses, and start fresh with a new mysterious celebrity.
-
 * Every guess you make is stored and displayed on the page for easy tracking.
+
+* Click “Restart Game” at any time to reset the game, clear guesses, and start fresh with a new mysterious celebrity. This will still keep your highscore so you cna compare with your previous best result.
