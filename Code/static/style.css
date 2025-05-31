@@ -50,7 +50,24 @@ body {
     margin-right: 40%;
     max-width: 420px;
     z-index: 0;
+    font-family: sans-serif;
+    font-weight: bold;
+    color: #000; /* Optional: for contrast, can be customized */
 }
+
+.container,
+.container h2,
+.container h3,
+.container h4,
+.container p,
+.container input,
+.container select,
+.container button,
+.container a {
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
 
 .center-container {
     text-align: center;
