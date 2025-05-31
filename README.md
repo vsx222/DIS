@@ -6,6 +6,7 @@ A simple Flask-based web app where you guess a randomly selected celebrity based
 ---
 
 ## E/R Diagram
+<img width="884" alt="E:R diagram" src="https://github.com/user-attachments/assets/84a2704a-2709-42fd-ba90-2d6625dc19bb" />
 
 ---
 
