@@ -22,7 +22,7 @@ Overall, this diagram paints a clear picture of how a celebrity’s personal det
 
 ## How to compile the web-app from source (incl. scripts to initialize the database)
 
-OBS!!! Remember to turn on the sound!
+# OBS!!! Remember to turn on the sound!
 
 Navigate to the project directory in  terminal:
 
