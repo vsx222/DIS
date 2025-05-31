@@ -3,6 +3,8 @@
 <head>
     <title>Guess Who</title>
     <link rel="stylesheet" href="../static/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='confetti.js') }}"></script>
 </head>
 
 <body>
@@ -40,6 +42,7 @@
             {% if winner is not none %}
             {% if winner and guesses %}
                 <p style="color: green;"> <strong>Correct! The celebrity was {{ correct_name }}</strong></p>
+                <script>launchConfetti();</script>
             {% elif not winner %}
                 <p style="color: red;"><strong>Wrong guess! Try again.</strong></p>
             {% endif %}
@@ -65,6 +68,8 @@
         {% endfor %}
     </div>
 
+    <div id="tsparticles"></div>
+
     <!-- JavaScript functions -->
     <script>
         function askQuestion() {
@@ -86,7 +91,6 @@
             });
         }
 
-        // Flip overlay on click
         function reveal(wrapper) {
             const overlay = wrapper.querySelector(".overlay");
             const index = Array.from(document.querySelectorAll('.img-wrapper')).indexOf(wrapper);
@@ -103,7 +107,6 @@
             sessionStorage.setItem('revealed', JSON.stringify(revealed));
         }
 
-        // Restore flipped images on reload
         window.onload = function () {
             const revealed = JSON.parse(sessionStorage.getItem('revealed') || '[]');
             const wrappers = document.querySelectorAll('.img-wrapper');
