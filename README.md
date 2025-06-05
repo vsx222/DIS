@@ -26,7 +26,9 @@ Overall, this diagram paints a clear picture of how a celebrity’s personal det
 
 ### OBS!!! Remember to turn on the sound!
 
-Navigate to the project directory in  terminal:
+After downloading the project, unzip it and navigate to the correct directory in  terminal:
+	
+	cd Code/
 
 ON MAC/LINUX:
 Run in terminal the following:
@@ -57,10 +59,10 @@ When the web app is running:
 
 * You begin by asking questions and receiving answers to help narrow down the possible options.
 
-* You can visually eliminate celebrities who no longer match the traits — just like in the classic “Guess Who?” game.
+* You can visually eliminate celebrities (by pressing the pictures) who no longer match the traits — just like in the classic “Guess Who?” game.
 
 * When you are confident, enter a name in the “Guess Celebrity” input field. You’ll be told immediately whether your guess is correct or not.
 
 * Every guess you make is stored and displayed on the page for easy tracking.
 
-* Click “Restart Game” at any time to reset the game, clear guesses, and start fresh with a new mysterious celebrity. This will still keep your highscore so you cna compare with your previous best result.
+* Click “Restart Game” at any time to reset the game, clear guesses, and start fresh with a new mysterious celebrity. This will still keep your highscore so you can compare with your previous best result.
