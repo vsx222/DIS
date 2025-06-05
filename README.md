@@ -28,7 +28,7 @@ Overall, this diagram paints a clear picture of how a celebrity’s personal det
 
 After downloading the project, unzip it and navigate to the correct directory in  terminal:
 	
-	cd Code/
+	cd DIS-main/DIS-main/Code/
 
 ON MAC/LINUX:
 Run in terminal the following:
