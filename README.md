@@ -4,6 +4,8 @@
 A simple Flask-based web app where you guess a randomly selected celebrity based on name input. Built with Python, SQLite and HTML/CSS.
 
 ---
+The sound is from: https://www.youtube.com/watch?v=x2NzoLMWAwQ&ab_channel=GamingSoundFX.
+---
 
 ## E/R Diagram
 <img width="884" alt="E:R diagram" src="https://github.com/user-attachments/assets/84a2704a-2709-42fd-ba90-2d6625dc19bb" />
