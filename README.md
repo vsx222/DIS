@@ -37,6 +37,7 @@ On Linux:
 	cd DIS-main/DIS-main/Code/
 
 Now in the terminal run the following:
+
 ON MAC/LINUX:
 
 	python -m venv .venv
