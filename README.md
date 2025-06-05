@@ -27,11 +27,17 @@ Overall, this diagram paints a clear picture of how a celebrity’s personal det
 ### OBS!!! Remember to turn on the sound!
 
 After downloading the project, unzip it and navigate to the correct directory in  terminal:
+
+On MAC/Windows:
+	
+	cd DIS-main/Code/
+
+On Linux:
 	
 	cd DIS-main/DIS-main/Code/
 
+Now in the terminal run the following:
 ON MAC/LINUX:
-Run in terminal the following:
 
 	python -m venv .venv
 	source .venv/bin/activate
@@ -41,7 +47,6 @@ Run in terminal the following:
 
 
 ON WINDOWS
-Run in terminal the following:
 
 	python -m venv .venv
 	Set-ExecutionPolicy Unrestricted -Scope Process
